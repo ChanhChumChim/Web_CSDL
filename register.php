@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -10,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>cla</title>
+      <title>Register Page</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -34,9 +32,7 @@
    <!-- body -->
    <body class="main-layout inner_posituong computer_page">
       <!-- loader  -->
-      <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-      </div>
+      
       <!-- end loader -->
       <!-- header -->
       <header>
@@ -97,29 +93,58 @@
       </header>
       <!-- end header inner -->
       <!-- end header -->
-      <!-- about section -->
-      <div class="about">
-         <div class="container">
-            <div class="row d_flex">
-               <div class="col-md-5">
-                  <div class="titlepage">
-                     <h2>About Us</h2>
-                     <p>CLA is a retail chain of digital products including mobile phones, tablets, laptops, accessories and technology services…  
-                        This is the first retail system to be certified only ISO 9001:2000 on quality management according to international standards. 
-                        Currently, CLA is the second largest retail chain in the retail technology market.</p>
-                     <a class="read_more" href="#">Read More</a>
-                  </div>
-               </div>
-               <div class="col-md-7">
-                  <div class="about_img">
-                     <figure><img src="images/about.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      </div>
-      <!-- end about section -->
+      
+      <!-- register section --> 
+         <?php
+            include('Admin/config/config.php');
+            if (isset($_POST['dangky'])) {
+               $tenkhachhang = $_POST['hovaten'];
+               $email = $_POST['email'];
+               $dienthoai = $_POST['dienthoai'];
+               $matkhau = md5($_POST['matkhau']);
+               $diachi = $_POST['diachi'];
+               $sql_dangky = mysqli_query($mysqli,"INSERT INTO register(customer_name,email,diachi,matkhau,phone_number) VALUE ('".$tenkhachhang."','".$email."','".$diachi."','".$matkhau."','".$dienthoai."')");
+               if ($sql_dangky) {
+                  echo '<p style="color:green">Đăng ký thành công !</p>';
+               }
+            }
+         ?>
+         <p>Đăng Ký Thành Viên</p>
+         <style type="text/css">
+            table.dangky tr td {
+               padding: 5px;
+            }
+         </style>
+         <form action="" method="POST">
+            <table class="dangky" border='1' width="50%" style="border-collapse: collapse;">
+               <tr>
+                  <td>Họ và tên</td>
+                  <td><input type="text" size="50" name="hovaten"></td>
+               </tr>
+               <tr>
+                  <td>Email</td>
+                  <td><input type="text" size="50" name="email"></td>
+               </tr>
+               <tr>
+                  <td>Điện thoại</td>
+                  <td><input type="text" size="50" name="dienthoai"></td>
+               </tr>
+               <tr>
+                  <td>Địa chỉ</td>
+                  <td><input type="text" size="50" name="diachi"></td>
+               </tr>
+               <tr>
+                  <td>Mật khẩu</td>
+                  <td><input type="text" size="50" name="matkhau"></td>
+               </tr>
+               <tr>
+                  <td colspan="2"><input type="submit" name="dangky" value="Đăng ký"></td>
+               </tr>
+            </table>
+         </form>
+
+      <!-- end register section -->
+
       <!--  footer -->
       <footer>
          <div class="footer">

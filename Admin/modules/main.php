@@ -10,6 +10,9 @@
         if($tam == 'quanlydanhmucsanpham') {
             include("modules/quanlydanhmucsp/add.php");
             include("modules/quanlydanhmucsp/lietke.php");
+        } else if ($tam == 'quanlysanpham'){
+            include("modules/quanlysp/add.php");
+            include("modules/quanlysp/lietke.php");
         } else {
             include("modules/dashboard.php");
         }

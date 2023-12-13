@@ -56,10 +56,10 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
-                              <li class="nav-item ">
+                              <li class="nav-item">
                                  <a class="nav-link" href="index.html">Home</a>
                               </li>
-                              <li class="nav-item active">
+                              <li class="nav-item">
                                  <a class="nav-link" href="about.html">About</a>
                               </li>
                               <li class="nav-item">
@@ -78,9 +78,9 @@
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="#">Login</a>
+                                 <a class="nav-link" href="login.php">Login</a>
                               </li>
-                              <li class="nav-item">
+                              <li class="nav-item active">
                                  <a class="nav-link" href="register.php">Register</a>
                               </li>
                            </ul>
@@ -103,7 +103,8 @@
                $dienthoai = $_POST['dienthoai'];
                $matkhau = md5($_POST['matkhau']);
                $diachi = $_POST['diachi'];
-               $sql_dangky = mysqli_query($mysqli,"INSERT INTO register(customer_name,email,diachi,matkhau,phone_number) VALUE ('".$tenkhachhang."','".$email."','".$diachi."','".$matkhau."','".$dienthoai."')");
+               $sql_dangky = mysqli_query($mysqli,"INSERT INTO register(customer_name,email,diachi,matkhau,phone_number) 
+               VALUE ('".$tenkhachhang."','".$email."','".$diachi."','".$matkhau."','".$dienthoai."')");
                if ($sql_dangky) {
                   echo '<p style="color:green">Đăng ký thành công !</p>';
                }
@@ -141,7 +142,7 @@
                   <td colspan="2"><input type="submit" name="dangky" value="Đăng ký"></td>
                </tr>
             </table>
-         </form>
+         </form>  
 
       <!-- end register section -->
 

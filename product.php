@@ -154,7 +154,6 @@ $categories = db_select('danhmuc', ' 1 ORDER BY id ASC ');
                                                             <span> <?= get_product_amount($cate['id']) ?> </span>
                                                         </div>
                                                     </li>
-                                                    <h1> <?php echo $category_type ?> </h1>
                                                 <?php } ?>    
                                             <!-- category -->
                                             <script>

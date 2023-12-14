@@ -58,7 +58,7 @@
             </tr>
         </table>
     </form>
-
+    <a href="../index.html">Quay về trang chủ</a>
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>

@@ -68,7 +68,7 @@
                                  <a class="nav-link" href="computer.html">Computer</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="laptop.html">Laptop</a>
+                                 <a class="nav-link" href="laptop.html">Giỏ hàng</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="product.html">Products</a>
@@ -80,10 +80,10 @@
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="#">Login</a>
+                                 <a class="nav-link" href="sing-in.html">Sign In</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="register.php">Register</a>
+                                 <a class="nav-link" href="php/sign-out.php">Sign Out</a>
                               </li>
                            </ul>
                         </div>
@@ -107,22 +107,22 @@
             </div>
             <div class="row">
                <div class="col-md-10 offset-md-1">
-                  <form id="request" class="main_form">
+                  <form id="request" class="main_form" method="post" action="php/save-contact.php">
                      <div class="row">
                         <div class="col-md-12 ">
                            <input class="contactus" placeholder="Name" type="type" name="Name"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="type" name="Email"> 
+                           <input class="contactus" placeholder="email" type="type" name="Email"> 
                         </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number">                          
+                           <input class="contactus" placeholder="Phone Number" type="type" name="phone-number">                          
                         </div>
                         <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message </textarea>
+                           <textarea class="textarea" placeholder="Type your message" type="type" Message="Name" name="message"></textarea>
                         </div>
                         <div class="col-md-12">
-                           <button class="send_btn">Send</button>
+                           <button type="submit" class="send_btn">Send</button>
                         </div>
                      </div>
                   </form>

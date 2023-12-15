@@ -54,3 +54,22 @@ function get_product_amount($id)
     $row = $res->fetch_column(0);
     return $row;
 }
+
+function db_insert($table, $data)
+{
+    $sql = "INSERT INTO $table ";
+    $sql .= "(id_sanpham, tensanpham, giasanpham, id_danhmuc, tendanhmuc, id_user, num_of_orders) ";
+    $sql .= "VALUES (";
+    foreach ($data as $key => $value) {
+        $get_type = gettype($value);
+        if ($get_type == 'string') {
+            $sql .= "'$value', ";
+        } else {
+            $sql .= $value ;
+            $sql .= ", ";
+        }
+    }
+    $sql .= "'12', '1')";
+    global $conn;
+    $conn->query($sql);
+}

@@ -51,6 +51,17 @@ if(array_key_exists('test10', $_POST)){
    $check = check_cate($check);
 }
 
+for($i = 0; $i < sizeof($products); $i++) {
+   if(array_key_exists('Add'.$products[$i]['id'], $_POST)){
+      $data['id_sanpham'] = $products[$i]['id'];
+      $data['tensanpham'] = $products[$i]['tensanpham'];
+      $data['giasanpham'] = $products[$i]['giasp'];
+      $data['id_danhmuc'] = $products[$i]['id_danhmuc'];  
+      $data['tendanhmuc'] = get_category_name($products[$i]['id_danhmuc']); 
+      db_insert('orders', $data);
+   }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -251,7 +262,7 @@ if(array_key_exists('test10', $_POST)){
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center my-4">
-                                            <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew More</a>
+                                            <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -273,8 +284,11 @@ if(array_key_exists('test10', $_POST)){
                                                    <p> <?= $pro_2['noidung'] ?> </p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                       <p class="text-dark fs-5 fw-bold mb-0"> <?= $pro_2['giasp'] ?> </p>
-                                                      <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                    </div>
+
+                                                   <form method="post">
+                                                      <input type = "submit" name = "<?php echo 'Add'. $pro_2['id'] ?>" id = "<?php echo 'Add'. $pro_2['id'] ?>" value = "Add to cart" />
+                                                   </form>
                                              </div>
                                           </div>
                                        </div>

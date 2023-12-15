@@ -1,0 +1,176 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>cla</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+   </div>
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="header">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                        <div class="logo">
+                           <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                  <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                     </button>
+                     <div class="collapse navbar-collapse" id="navbarsExample04">
+                        <ul class="navbar-nav mr-auto">
+                           <li class="nav-item ">
+                              <a class="nav-link" href="index.html">Home</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="about.html">About</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="computer.html">Computer</a>
+                           </li>
+                           <li class="nav-item active">
+                              <a class="nav-link" href="checkout.html">Payment</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="product.php">Products</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="contact.html">Contact Us</a>
+                           </li>
+                           <li class="nav-item d_none">
+                              <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="sing-in.html">Sign In</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="php/sign-out.php">Sign Out</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!-- end header inner -->
+   <!-- end header -->
+      <!-- banner -->
+      <section class="banner_main">
+         <div class="container col-4 my-5 br-2 rounded">
+            <div class="row g-10">
+               <div class="col-12">
+                  <h4>Billing Address</h4>
+                  <form id="request" action="php/process-checkout.php" method="post">
+                     <div class="row">
+                        <div class="col-6">
+                           <label class="form-label" name="first_name">First Name</label>
+                           <input type="text" name="first_name" id="firstname" class="form-control">
+                        </div>
+                        <div class="col-6">
+                           <label class="form-label" name="last_name">Last name</label>
+                           <input type="text" name="last_name" id="lastname" class="form-control">
+                        </div>
+                        <div class="col-12">
+                           <label class="from-label" name="username">Username</label>
+                           <div class="input-group">
+                              <span class="input-group-text">@</span>
+                              <input type="text" name="username" class="form-control" id="username">
+                           </div>
+                        </div>
+                        <div class="col-12">
+                           <label class="form-label" name="email">Email
+                              <span class="text-muted"> (Optional)</span>
+                           </label>
+                           <input type="text" name="email" id="email" class="form-control">
+                        </div>
+                        <div class="col-12">
+                           <label class="form-label" name="address">Shipping Address</label>
+                           <input type="text" name="address" id="address" class="form-control">
+                        </div>
+                        <div class="col-3">
+                           <label class="form-label" name="zip">Zip </label>
+                           <input type="text" name="zip" id="zip" class="form-control">
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-6">
+                           <label class="form-label" name="cardname">Name on Card </label>
+                           <input type="text" name="cardname" id="cardname" class="form-control">
+                           <small class="text-muted">Full name as displayed on card</small>
+                        </div>
+                        <div class="col-6">
+                           <label class="form-label" name="creditcard">Credit Card Number </label>
+                           <input type="text" name="creditcard" id="creditcard" class="form-control">
+                        </div>
+                        <div class="col-3">
+                           <label class="form-label" name="expiration">Expiration </label>
+                           <input type="text" name="expiration" id="expiration" class="form-control">
+                        </div>
+                        <div class="col-3">
+                           <label class="form-label" name="cvv">CVV </label>
+                           <input type="text" name="cvv" id="cvv" class="form-control">
+                        </div>
+                     </div>
+                     <hr>
+                     <button type="submit" class="btn btn-primary btn-block mb-4">Continue To Checkout</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Javascript files-->
+      <script src="js/checkoutfunction.js"></script>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
+   </body>
+</html>
+

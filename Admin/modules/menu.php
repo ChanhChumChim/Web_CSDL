@@ -10,6 +10,7 @@
     <li><a href = "index.php?action=quanlysanpham">Quản lý sản phẩm</a></li>
     <li><a href = "index.php?action=quanly1">Quản lý đơn hàng</a></li>
     <li><a href = "index.php?action=quanly2">Quản lý phản hồi khách hàng</a></li>
+    <li><a href = "index.php?action=quanly3">Quản lý thanh toán</a></li>
     <li><a href = "index.php?dangxuat=1">
         Đăng xuất : 
             <?php if(isset($_SESSION['dangnhap'])) {

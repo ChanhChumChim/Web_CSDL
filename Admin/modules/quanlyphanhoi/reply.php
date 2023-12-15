@@ -1,5 +1,4 @@
 <?php
-
     $query = "SELECT * FROM customer_reply";
     $result = $mysqli->query($query);
 

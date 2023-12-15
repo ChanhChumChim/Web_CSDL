@@ -16,7 +16,7 @@
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['customer_name'];
-                
+                echo "<script>alert('Signed In Successfully');</script>";
                 // Chuyển hướng đến trang chính sau khi đăng nhập thành công
                 header("Location: ../index.html");
                 exit();

@@ -1,10 +1,55 @@
 <?php
-include 'varible.php';
 require_once('Admin/config/config.php');
 
 require_once('Admin/function.php');
 $products = db_select('product', ' 1 ORDER BY id ASC ');
 $categories = db_select('danhmuc', ' 1 ORDER BY id ASC ');
+$check = -1;
+$product_by_cate = [];
+
+function db_select_by_cate($cate_id)
+{
+   $product_by_cate_in = db_select('product', " id_danhmuc =  $cate_id  ORDER BY id_danhmuc ASC ");
+   return $product_by_cate_in;
+}
+
+function check_cate($check_cate)
+{
+   if($check_cate == -1) {
+      return 0;
+   }
+   return -1;
+}
+
+if(array_key_exists('test6', $_POST)){
+   unset ($product_by_cate);
+   $product_by_cate = db_select_by_cate('6');
+   $check = check_cate($check);
+}
+
+if(array_key_exists('test7', $_POST)){
+   unset ($product_by_cate);
+   $product_by_cate = db_select_by_cate('7');
+   $check = check_cate($check);
+}
+
+if(array_key_exists('test8', $_POST)){
+   unset ($product_by_cate);
+   $product_by_cate = db_select_by_cate('8');
+   $check = check_cate($check);
+}
+
+if(array_key_exists('test9', $_POST)){
+   unset ($product_by_cate);
+   $product_by_cate = db_select_by_cate('9');
+   $check = check_cate($check);
+}
+
+if(array_key_exists('test10', $_POST)){
+   unset ($product_by_cate);
+   $product_by_cate = db_select_by_cate('10');
+   $check = check_cate($check);
+}
 
 ?>
 
@@ -148,10 +193,14 @@ $categories = db_select('danhmuc', ' 1 ORDER BY id ASC ');
                                             <ul class="list-unstyled fruite-categorie">
                                             <!-- category -->
                                                 <?php foreach ($categories as $key1 => $cate) { ?>
-                                                    <li onclick="db_category('<?php $cate['id'] ?>')">
+                                                   
+                                                    <li onclick="">
                                                         <div class="d-flex justify-content-between fruite-name">
                                                             <a href="#"><i class="fas fa-apple-alt me-2"></i> <?= $cate['tendanhmuc'] ?> </a>
                                                             <span> <?= get_product_amount($cate['id']) ?> </span>
+                                                            <form method="post">
+                                                                <input type="submit" name="<?php echo 'test'.$cate['id'] ?>" id="<?php echo 'test'.$cate['id'] ?>" value="RUN" /><br/>
+                                                            </form>
                                                         </div>
                                                     </li>
                                                 <?php } ?>    
@@ -201,44 +250,6 @@ $categories = db_select('danhmuc', ' 1 ORDER BY id ASC ');
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/featur-2.jpg" class="img-fluid rounded" alt="">
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-2">Big Banana</h6>
-                                                <div class="d-flex mb-2">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2">2.99 $</h5>
-                                                    <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                <img src="img/featur-3.jpg" class="img-fluid rounded" alt="">
-                                            </div>
-                                            <div>
-                                                <h6 class="mb-2">Big Banana</h6>
-                                                <div class="d-flex mb-2">
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star text-secondary"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                                <div class="d-flex mb-2">
-                                                    <h5 class="fw-bold me-2">2.99 $</h5>
-                                                    <h5 class="text-danger text-decoration-line-through">4.11 $</h5>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="d-flex justify-content-center my-4">
                                             <a href="#" class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew More</a>
                                         </div>
@@ -248,10 +259,31 @@ $categories = db_select('danhmuc', ' 1 ORDER BY id ASC ');
                             <div class="col-lg-9">
                                 <div class="row g-4 justify-content-center">
 
-                                    <?php 
-                                       $check_point = -1;
-                                       foreach ($products as $key => $pro) { ?>
-                                       
+                                    <?php if($check == -1) {
+                                       foreach ($products as $keys => $pro_2) { ?>
+                                       <!-- Product -->
+                                       <div class="col-md-6 col-lg-6 col-xl-4">
+                                          <div class="rounded position-relative fruite-item">
+                                             <div class="fruite-img">
+                                                   <img src="<?= get_product_thumb($pro_2['hinhanh']) ?>" class="img-fluid w-100 rounded-top" alt="">
+                                             </div>
+                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;"> <?= get_category_name($pro_2['id_danhmuc']) ?> </div>
+                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                   <h4> <?= $pro_2['tensanpham'] ?> </h4>
+                                                   <p> <?= $pro_2['noidung'] ?> </p>
+                                                   <div class="d-flex justify-content-between flex-lg-wrap">
+                                                      <p class="text-dark fs-5 fw-bold mb-0"> <?= $pro_2['giasp'] ?> </p>
+                                                      <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                   </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!-- Product -->
+                                    <?php }
+                                    } ?> 
+                                    
+                                    <?php if($check == 0) { ?>
+                                       <?php foreach ($product_by_cate as $key => $pro) { ?>
                                        <!-- Product -->
                                        <div class="col-md-6 col-lg-6 col-xl-4">
                                           <div class="rounded position-relative fruite-item">
@@ -270,8 +302,8 @@ $categories = db_select('danhmuc', ' 1 ORDER BY id ASC ');
                                           </div>
                                        </div>
                                        <!-- Product -->
-
-                                    <?php } ?>   
+                                    <?php }
+                                    } ?>
 
                                     <div class="col-12">
                                         <div class="pagination d-flex justify-content-center mt-5">

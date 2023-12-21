@@ -62,6 +62,37 @@ for($i = 0; $i < sizeof($products); $i++) {
    }
 }
 
+if (isset($_POST['add'])){
+    /// print_r($_POST['product_id']);
+    if(isset($_SESSION['cart'])){
+
+        $item_array_id = array_column($_SESSION['cart'], "ma_sp");
+
+        if(in_array($_POST['ma_sp'], $item_array_id)){
+            echo "<script>alert('Product is already added in the cart..!')</script>";
+            echo "<script>window.location = 'index.php'</script>";
+        }else{
+
+            $count = count($_SESSION['cart']);
+            $item_array = array(
+                'ma_sp' => $_POST['masp']
+            );
+
+            $_SESSION['cart'][$count] = $item_array;
+        }
+
+    }else{
+
+        $item_array = array(
+            'ma_sp' => $_POST['masp']
+        );
+
+        // Create new session variable
+        $_SESSION['cart'][0] = $item_array;
+        print_r($_SESSION['cart']);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +136,13 @@ for($i = 0; $i < sizeof($products); $i++) {
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
+       <!-- Font Awesome -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" />
+
+       <!-- Bootstrap CDN -->
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 
@@ -163,6 +200,21 @@ for($i = 0; $i < sizeof($products); $i++) {
                               <li class="nav-item d_none">
                                  <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                               </li>
+                               <li class="nav-item">
+                                           <a class="nav-link" href="cart.php" >
+                                                   <i class="fas fa-shopping-cart"></i> Cart
+                                                   <?php
+
+                                                   if (isset($_SESSION['cart'])){
+                                                       $count = count($_SESSION['cart']);
+                                                       echo "<span id=\"cart_count\">$count</span>";
+                                                   }else{
+                                                       echo "<span id=\"cart_count\">0</span>";
+                                                   }
+
+                                                   ?>
+                                           </a>
+                               </li>
                               <li class="nav-item">
                                     <a class="nav-link" href="sing-in.html">Sign In</a>
                               </li>
@@ -286,9 +338,10 @@ for($i = 0; $i < sizeof($products); $i++) {
                                                       <p class="text-dark fs-5 fw-bold mb-0"> <?= $pro_2['giasp'] ?> </p>
                                                    </div>
 
-                                                   <form method="post">
-                                                      <input type = "submit" name = "<?php echo 'Add'. $pro_2['id'] ?>" id = "<?php echo 'Add'. $pro_2['id'] ?>" value = "Add to cart" />
-                                                   </form>
+
+                                                 <button type="submit" class="btn btn-warning my-3" name="add">Add to Cart <i class="fas fa-shopping-cart"> </i> </button>
+                                                 <input type='hidden' name='ma_sp' value='masp'>
+
                                              </div>
                                           </div>
                                        </div>

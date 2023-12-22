@@ -142,7 +142,7 @@ for($i = 0; $i < sizeof($products); $i++) {
                         </button>
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
-                              <li class="nav-item active">
+                              <li class="nav-item">
                                  <a class="nav-link" href="index.html">Home</a>
                               </li>
                               <li class="nav-item">
@@ -154,7 +154,7 @@ for($i = 0; $i < sizeof($products); $i++) {
                               <li class="nav-item">
                                  <a class="nav-link" href="checkout.html">Payment</a>
                               </li>
-                              <li class="nav-item">
+                              <li class="nav-item active">
                                  <a class="nav-link" href="product.php">Products</a>
                               </li>
                               <li class="nav-item">
